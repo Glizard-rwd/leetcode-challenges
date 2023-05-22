@@ -43,6 +43,25 @@ public class _1343_NumberOfSubarr {
         return count;
     }
 
+    public static int numOfSubarraysFaster(int[] arr, int k, int threshold) {
+        int count = 0;
+        int sum = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
+
+            if (i >= k - 1) {
+                if (sum >= threshold * k) {
+                    count++;
+                }
+                sum -= arr[i - k + 1];
+            }
+        }
+
+        return count;
+    }
+
+
     public static void main(String[] args) {
         int[] arr = {11, 13, 17, 23, 29, 31, 7, 5, 2, 3};
         int k = 3;
@@ -52,6 +71,7 @@ public class _1343_NumberOfSubarr {
 
         int[] arr1 = {2,2,2,2,5,5,5,8};
         System.out.println(numOfSubarrays(arr1, 3, 4));
+        System.out.println(numOfSubarraysFaster(arr1, 3, 4));
     }
 
 }
