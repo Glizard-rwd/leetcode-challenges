@@ -21,16 +21,23 @@ public class _3_LongestSubstringWithoutRepeatingCharacters {
     }
 
     public static int secondSolution(String s) {
-        int res = 0;
-        int l = 0;
+        int maxLength = 0;
+        int i = 0;
+        int n = s.length();
+        boolean[] visited = new boolean[256];
 
-        for (int r = 0; r < s.length(); r++) {
-            if (s.charAt(l) == s.charAt(r)) {
-                l = r;
+        int j = 0;
+        while (j < n) {
+            if (!visited[s.charAt(j)]) {
+                visited[s.charAt(j)] = true;
+                maxLength = Math.max(maxLength, j - i + 1);
+                j++;
+            } else {
+                visited[s.charAt(i)] = false;
+                i++;
             }
-            res = Math.max(res, r - l + 1);
         }
-        return res;
+        return maxLength;
     }
     public static void main(String[] args) {
         String str1 = "bbbbb";
