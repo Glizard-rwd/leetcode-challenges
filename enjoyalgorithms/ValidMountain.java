@@ -1,5 +1,7 @@
 package enjoyalgorithms;
-
+/*
+https://www.enjoyalgorithms.com/blog/valid-mountain-array/
+ */
 public class ValidMountain {
     public static boolean validMountain(int[] arr, int n) {
         // input: array and (length n of array)
